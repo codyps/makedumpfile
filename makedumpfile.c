@@ -8717,9 +8717,6 @@ main(int argc, char *argv[])
 	}
 
 	if (elf_version(EV_CURRENT) == EV_NONE ) {
-		/*
-		 * library out of date
-		 */
 		ERRMSG("Elf library out of date!\n");
 		goto out;
 	}
