@@ -1556,9 +1556,13 @@ is_dumpable(struct dump_bitmap *bitmap, unsigned long long pfn)
 {
 	off_t offset;
 	if (pfn == 0 || bitmap->no_block != pfn/PFN_BUFBITMAP) {
+		ssize_t r;
 		offset = bitmap->offset + BUFSIZE_BITMAP*(pfn/PFN_BUFBITMAP);
 		lseek(bitmap->fd, offset, SEEK_SET);
-		read(bitmap->fd, bitmap->buf, BUFSIZE_BITMAP);
+		r = read(bitmap->fd, bitmap->buf, BUFSIZE_BITMAP);
+		if (r != BUFSIZE_BITMAP) {
+			return -1;
+		}
 		if (pfn == 0)
 			bitmap->no_block = 0;
 		else
