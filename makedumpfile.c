@@ -2849,7 +2849,7 @@ initial(void)
 		}
 
 		if (!is_xen_memory()) {
-			MSG("'-X' option is disable,");
+			MSG("'-X' option is disabled,");
 			MSG("because %s is not Xen's memory core image.\n", info->name_memory);
 			MSG("Commandline parameter is invalid.\n");
 			MSG("Try `makedumpfile --help' for more information.\n");
@@ -2859,7 +2859,7 @@ initial(void)
 
 	if (info->flag_refiltering) {
 		if (info->flag_elf_dumpfile) {
-			MSG("'-E' option is disable, ");
+			MSG("'-E' option is disabled, ");
 			MSG("because %s is kdump compressed format.\n",
 							info->name_memory);
 			return FALSE;
@@ -2880,7 +2880,7 @@ initial(void)
 
 	} else if (info->flag_sadump) {
 		if (info->flag_elf_dumpfile) {
-			MSG("'-E' option is disable, ");
+			MSG("'-E' option is disabled, ");
 			MSG("because %s is sadump %s format.\n",
 			    info->name_memory, sadump_format_type_name());
 			return FALSE;
